@@ -25,23 +25,51 @@ public class Term {
     // If `len` is larger than the word length, the prefix is the entire word.
     public String getPrefix(int len) {
         // TODO
-        throw new UnsupportedOperationException();
+
+        if (len > getWord().length()) {
+            return getWord();
+        } else
+            return getWord().substring(0,len);
+        //throw new UnsupportedOperationException();
     }
 
     // Compares two terms in case-insensitive lexicographic order.
     // TODO
-    public static final Comparator<Term> byLexicographicOrder = null;
+    public static final Comparator<Term> byLexicographicOrder = new Comparator<Term>() {
+        @Override
+        public int compare(Term o1, Term o2) {
+            return o1.getWord().compareToIgnoreCase(o2.getWord());
+        }
+    };
 
     // Compares two terms in descending order by weight.
     // TODO
-    public static final Comparator<Term> byReverseWeightOrder = null;
+    public static final Comparator<Term> byReverseWeightOrder = new Comparator<Term>() {
+        @Override
+        public int compare(Term o1, Term o2) {
+            if (o1.getWeight() > o2.getWeight())
+                return -1;
+            else if (o1.getWeight() == o2.getWeight())
+                return 0;
+            else
+                return 1;
+        }
+    };
 
     // This method returns a comparator that compares the two terms in case-insensitive
     // lexicographic order, but using only the first k characters of each word.
     public static Comparator<Term> byPrefixOrder(int k) {
         // TODO
         // Hint: use getPrefix and follow what you did for byLexicographicOrder.
-        throw new UnsupportedOperationException();
+
+        Comparator<Term> byPrefixOrder = new Comparator<Term>() {
+            @Override
+            public int compare(Term o1, Term o2) {
+                return o1.getPrefix(k).compareToIgnoreCase(o2.getPrefix(k));
+            }
+        };
+        return byPrefixOrder;
+        //throw new UnsupportedOperationException();
     }
 
     /*
