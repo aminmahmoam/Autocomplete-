@@ -3,9 +3,9 @@
 ******************************************************************************/
 
 Group members:
-- [...]
-- [...]
-- [...]
+- Amin Mahmoudifard
+- Faiza Amjad
+- Yasamin Fazelidehkordi
 
 /******************************************************************************
 ** 1. Describe how your firstIndexOf() method in RangeBinarySearch.java
