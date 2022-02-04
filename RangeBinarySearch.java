@@ -13,7 +13,7 @@ public class RangeBinarySearch {
         int hi= a.length-1;
         int answer=0;
 
-        while (lo<hi){
+        while (lo<=hi){
             int mid= (lo+hi)/2;
             int result = comparator.compare(a[mid],key);
             if( result == -1 ) {
@@ -21,21 +21,10 @@ public class RangeBinarySearch {
             } else if (result == 1) {
                 hi = mid-1;
             } else if (result == 0) {
-                hi= mid;
-                if(lo<hi) {
-                    if( result == 0 ) {
-                        hi = mid;
-                    } else if (result == 1) {
-                        lo= mid+1;
-                    }
-                } else if (lo==hi) {
-                    answer =mid;
-                }
-            } else {
-                return -1;
+                answer = mid;
+                hi = mid -1 ;
             }
         }
-
         return answer;
     }
 
@@ -49,37 +38,20 @@ public class RangeBinarySearch {
         int hi= a.length-1;
         int answer=0;
 
-        while (lo<hi){
+        while (lo<=hi){
             int mid= (lo+hi)/2;
             int result = comparator.compare(a[mid],key);
-
             if( result == -1 ) {
                 lo= mid+1;
             } else if (result == 1) {
                 hi = mid-1;
             } else if (result == 0) {
-                lo = mid;
-                while (lo<=hi) {
-                    mid = (lo + hi) / 2;
-                    if (result == 0 && lo!=hi) {
-                        lo = mid+1;
-                    } else if (result == 1 && lo!=hi) {
-                        hi = mid-1;
-                    }
-                     else if (lo == hi) {
-                        answer = mid;
-                        lo++;
-                    }
-                }
-
-            } else {
-                return -1;
+                answer = mid;
+                lo = mid +1;
             }
         }
-
         return answer;
     }
-
 
     public static final Comparator<String> alphabetically = new Comparator<String>() {
         @Override
@@ -92,11 +64,8 @@ public class RangeBinarySearch {
     // For testing purposes.
     public static void main(String[] args) {
         // Here you can write some tests if you want.
-
-
-
         String[] T = {"a","a","b","b","c","c","c"};
-        int answer= firstIndexOf(T,"a", alphabetically);
+        int answer= firstIndexOf(T,"b", alphabetically);
         System.out.println(answer);
 
         int secondAnswer= lastIndexOf(T, "c", alphabetically);
