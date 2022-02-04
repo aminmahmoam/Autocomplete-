@@ -52,20 +52,24 @@ public class RangeBinarySearch {
         while (lo<hi){
             int mid= (lo+hi)/2;
             int result = comparator.compare(a[mid],key);
+
             if( result == -1 ) {
                 lo= mid+1;
             } else if (result == 1) {
                 hi = mid-1;
             } else if (result == 0) {
-                hi= mid;
-                if(lo<hi) {
-                    if( result == 0 ) {
-                        hi = mid;
-                    } else if (result == 1) {
-                        lo= mid+1;
+                lo = mid;
+                while (lo<=hi) {
+                    mid = (lo + hi) / 2;
+                    if (result == 0 && lo!=hi) {
+                        lo = mid+1;
+                    } else if (result == 1 && lo!=hi) {
+                        hi = mid-1;
                     }
-                } else if (lo==hi) {
-                    answer =mid;
+                     else if (lo == hi) {
+                        answer = mid;
+                        lo++;
+                    }
                 }
 
             } else {
