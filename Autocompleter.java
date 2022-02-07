@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Autocompleter {
@@ -14,7 +13,7 @@ public class Autocompleter {
     // Complexity: O(N log N) where N is the number of dictionary terms
     private void sortDictionary() {
         // TODO
-        Arrays.parallelSort(dictionary, Term.byLexicographicOrder);
+        Arrays.sort(this.dictionary,Term.byLexicographicOrder);
     }
 
     // Returns the number of terms that start with the given prefix.

@@ -22,12 +22,12 @@ import java.io.IOException;
 
 class AutocompleteCLI {
     public static void main(String[] args) throws IOException {
-        /* // If you don't want to specify arguments on the command-line, just uncomment this block.
+        // If you don't want to specify arguments on the command-line, just uncomment this block.
         if (args.length == 0) {
-            args = new String[] { "dictionaries/romaner.txt",  // Path to the dictionary file.
+            args = new String[] { "dictionaries/cities.txt",  // Path to the dictionary file.
                                   "5" };                       // Maximum number of matches to display.
         }
-        */
+
 
         ParsedInput parsedInput = new ParsedInput(args);
         Autocompleter autocompleter = new Autocompleter(parsedInput.dictionary);
