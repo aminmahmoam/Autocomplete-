@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Autocompleter {
@@ -14,7 +13,7 @@ public class Autocompleter {
     // Complexity: O(N log N) where N is the number of dictionary terms
     private void sortDictionary() {
         // TODO
-        Arrays.parallelSort(dictionary, Term.byLexicographicOrder);
+        Arrays.sort(this.dictionary,Term.byLexicographicOrder);
     }
 
     // Returns the number of terms that start with the given prefix.
@@ -22,15 +21,15 @@ public class Autocompleter {
     // Complexity: O(log N) where N is the number of dictionary terms
     public int numberOfMatches(String prefix) {
         // TODO
-        int lo=0;
-        int hi=0;
+        int firstMatch;
+        int lastMatch;
         Term prefix2 = new Term(prefix,0);
 
-        lo = RangeBinarySearch.firstIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
-        hi = RangeBinarySearch.lastIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
-        System.out.println(lo);
-        System.out.println(hi);
-        return (hi - lo) + 1;
+        firstMatch = RangeBinarySearch.firstIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
+        lastMatch = RangeBinarySearch.lastIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
+        //System.out.println(firstMatch);
+        //System.out.println(lastMatch);
+        return (lastMatch - firstMatch) + 1;
     }
 
     // Returns all terms that start with the given prefix, in descending order of weight.
@@ -41,22 +40,19 @@ public class Autocompleter {
         int numberOfMatches = numberOfMatches(prefix);
         Term[] result = new Term[numberOfMatches];
 
-        int lo=0;
-        int hi=0;
+        int lo;
+        int hi;
         Term prefix2 = new Term(prefix,0);
 
         lo = RangeBinarySearch.firstIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
         hi = RangeBinarySearch.lastIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
 
-        int i=0;
-        for (int j=lo; lo<hi; lo++) {
+        int i = 0;
+        for (int j = lo; lo <= hi; lo++) {
             result[i] = dictionary[j];
             i++;
         }
-
         Arrays.parallelSort(result, Term.byReverseWeightOrder);
-
         return result;
-
     }
 }

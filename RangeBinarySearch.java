@@ -11,18 +11,19 @@ public class RangeBinarySearch {
         // TODO
         int lo=0;
         int hi= a.length-1;
-        int answer=0;
+        int answer = -1 ;
 
-        while (lo<=hi){
-            int mid= (lo+hi)/2;
+        while (lo <= hi){
+            int mid = (lo+hi)/2;
             int result = comparator.compare(a[mid],key);
-            if( result == -1 ) {
-                lo= mid+1;
-            } else if (result == 1) {
-                hi = mid-1;
-            } else if (result == 0) {
+            if (result == 0) {
                 answer = mid;
-                hi = mid -1 ;
+                hi = mid - 1;
+            }
+            if( result <= -1 ) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
             }
         }
         return answer;
@@ -36,18 +37,18 @@ public class RangeBinarySearch {
         // TODO
         int lo=0;
         int hi= a.length-1;
-        int answer=0;
+        int answer= -1;
 
-        while (lo<=hi){
-            int mid= (lo+hi)/2;
-            int result = comparator.compare(a[mid],key);
-            if( result == -1 ) {
-                lo= mid+1;
-            } else if (result == 1) {
-                hi = mid-1;
-            } else if (result == 0) {
+        while (lo<=hi) {
+            int mid = (lo + hi) / 2;
+            int result = comparator.compare(a[mid], key);
+            if (result == 0) {
                 answer = mid;
-                lo = mid +1;
+                lo = mid + 1;
+            } else if (result <= -1) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
             }
         }
         return answer;
@@ -65,10 +66,10 @@ public class RangeBinarySearch {
     public static void main(String[] args) {
         // Here you can write some tests if you want.
         String[] T = {"a","a","b","b","c","c","c"};
-        int answer= firstIndexOf(T,"b", alphabetically);
-        System.out.println(answer);
+        int firstAnswer= firstIndexOf(T,"d", alphabetically);
+        System.out.println(firstAnswer);
 
-        int secondAnswer= lastIndexOf(T, "c", alphabetically);
+        int secondAnswer= lastIndexOf(T, "b", alphabetically);
         System.out.println(secondAnswer);
     }
 }
