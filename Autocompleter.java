@@ -53,7 +53,7 @@ public class Autocompleter {
             lo++;
             i++;
         }
-        Arrays.parallelSort(result, Term.byReverseWeightOrder);
+        Arrays.sort(result, Term.byReverseWeightOrder);
         return result;
     }
 }

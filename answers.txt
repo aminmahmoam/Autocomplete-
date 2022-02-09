@@ -12,7 +12,11 @@ Group members:
 **    finds the first index of a key that equals the search key.
 ******************************************************************************/
 
-[...]
+In the method, the lo variable is the first index and the hi variable is the last index of the array. We first get the mid as the middle index between
+hi and lo.Then we do a binary search to check if the mid is equal to the key and if that is not true, what our method does is that it ignores
+the last half of the array and repeats the process with the remaining elements of the array. Moreover, in case of finding a match between the mid
+and our key, we update our hi as one index lower than the current mid. We continue this process until the lo and hi are equal meaning that the searching
+process is finished and at last we return the answer and if the answer is -1, it shows that the key was not found in the array.
 
 /******************************************************************************
 ** 2. State and justify the asymptotic complexity of the operations
@@ -23,17 +27,24 @@ Group members:
 **    You may take the number of comparisons as a proxy for the runtime.
 ******************************************************************************/
 
-sortDictionary: O(n)
+sortDictionary: O(nlog(n))
 
-[..short explanation..]
+The Arrays.sort method is based on Timsort algorithm and this algorithm uses the insertion and mergesort, so the
+complexity is of linearithmic order.
 
-numberOfMatches: O(...)
+numberOfMatches: O(log(n))
 
-[..short explanation..]
+In this method, we used the firstIndexOf and lastIndexOf methods from RangeBinarySearch class and the complexity of each of these
+two methods is logarithmic because they are based on binary search. So, the total complexity of the numberOfMatches would be
+sum of two logarithmic complexities, which at last will be logarithmic again.
 
-allMatches: O(...)
+allMatches: O(log(n) + m log(m))
+At first, we use numberOfMatches method, which has the complexity of log n. Later we use firstIndexOf and lastIndexOf methods
+from RangeBinarySearch class with a total complexity of log n, Therefore the complexity of these three methods would be log n in total.
+Moreover, we put all the desired elements in the result array, which has the complexity of m and at last we used the Arrays.sort method
+with complexity of m log m and these two will have a complexity of m log m in total (Because complexity  m log m is greater than m, we
+consider the complexity as m log m in total). Finally, the complexity of the whole method will be log n + m log m.
 
-[..short explanation..]
 
 /******************************************************************************
 ** Appendix: General information
@@ -41,15 +52,15 @@ allMatches: O(...)
 ** A. Approximately how many hours did you spend on the assignment?
 ******************************************************************************/
 
-Yasamin:  hours
-Amin:  [..hours..]
-Faiza:  [..hours..]
+Yasamin:  9 hours
+Amin:     9 hours
+Faiza:    9 hours
 
 /******************************************************************************
 ** B. Are there any known bugs / limitations?
 ******************************************************************************/
 
-No
+No, we fixed all the bugs we found.
 
 /******************************************************************************
 ** C. Did you collaborate with any other students on this lab?
@@ -58,13 +69,13 @@ No
 **    may have used in creating your design.
 ******************************************************************************/
 
-No we did not.
+No we did not collaborate with others.
 
 /******************************************************************************
 ** D. Describe any serious problems you encountered.                    
 ******************************************************************************/
 
-[...]
+We did not have any serious issues.
 
 /******************************************************************************
 ** E. List any other comments here.
