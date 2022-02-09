@@ -66,7 +66,7 @@ public class RangeBinarySearch {
     public static void main(String[] args) {
         // Here you can write some tests if you want.
         String[] T = {"a","a","b","b","c","c","c"};
-        int firstAnswer= firstIndexOf(T,"d", alphabetically);
+        int firstAnswer= firstIndexOf(T,"c", alphabetically);
         System.out.println(firstAnswer);
 
         int secondAnswer= lastIndexOf(T, "b", alphabetically);

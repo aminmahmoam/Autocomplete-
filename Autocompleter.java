@@ -48,8 +48,9 @@ public class Autocompleter {
         hi = RangeBinarySearch.lastIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
 
         int i = 0;
-        for (int j = lo; lo <= hi; lo++) {
+        for (int j = lo; lo <= hi; j++) {
             result[i] = dictionary[j];
+            lo++;
             i++;
         }
         Arrays.parallelSort(result, Term.byReverseWeightOrder);

@@ -23,7 +23,7 @@ Group members:
 **    You may take the number of comparisons as a proxy for the runtime.
 ******************************************************************************/
 
-sortDictionary: O(...)
+sortDictionary: O(n)
 
 [..short explanation..]
 
@@ -41,15 +41,15 @@ allMatches: O(...)
 ** A. Approximately how many hours did you spend on the assignment?
 ******************************************************************************/
 
-[..group member..]:  [..hours..]
-[..group member..]:  [..hours..]
-[..group member..]:  [..hours..]
+Yasamin:  hours
+Amin:  [..hours..]
+Faiza:  [..hours..]
 
 /******************************************************************************
 ** B. Are there any known bugs / limitations?
 ******************************************************************************/
 
-[...]
+No
 
 /******************************************************************************
 ** C. Did you collaborate with any other students on this lab?
@@ -58,7 +58,7 @@ allMatches: O(...)
 **    may have used in creating your design.
 ******************************************************************************/
 
-[...]
+No we did not.
 
 /******************************************************************************
 ** D. Describe any serious problems you encountered.                    
