@@ -25,7 +25,7 @@ class AutocompleteCLI {
         // If you don't want to specify arguments on the command-line, just uncomment this block.
         if (args.length == 0) {
             args = new String[] { "dictionaries/cities.txt",  // Path to the dictionary file.
-                                  "5" };                       // Maximum number of matches to display.
+                                  "10" };                       // Maximum number of matches to display.
         }
 
 

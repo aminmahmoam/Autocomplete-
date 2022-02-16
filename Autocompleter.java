@@ -27,8 +27,9 @@ public class Autocompleter {
 
         firstMatch = RangeBinarySearch.firstIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
         lastMatch = RangeBinarySearch.lastIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
-        //System.out.println(firstMatch);
-        //System.out.println(lastMatch);
+        if (firstMatch == -1 || lastMatch == -1){
+            return 0;
+        }
         return (lastMatch - firstMatch) + 1;
     }
 
