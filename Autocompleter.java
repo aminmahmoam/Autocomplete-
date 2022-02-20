@@ -47,16 +47,15 @@ public class Autocompleter {
 
         lo = RangeBinarySearch.firstIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
         hi = RangeBinarySearch.lastIndexOf(dictionary,prefix2,Term.byPrefixOrder(prefix.length()));
-        if (lo == -1 || hi == -1){
-            return null;
+        if (lo > -1 || hi > -1){
+            int i = 0;
+            for (int j = lo; lo <= hi; j++) {
+                result[i] = dictionary[j];
+                lo++;
+                i++;
+            }
+            Arrays.sort(result, Term.byReverseWeightOrder);
         }
-        int i = 0;
-        for (int j = lo; lo <= hi; j++) {
-            result[i] = dictionary[j];
-            lo++;
-            i++;
-        }
-        Arrays.sort(result, Term.byReverseWeightOrder);
         return result;
     }
 }
